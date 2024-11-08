@@ -10,6 +10,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "maatwebsite/excel": "^3.1",
+        "nesbot/carbon": "^2.72",
+        "yajra/laravel-datatables": "^10.1",
         "yoeunes/toastr": "^2.3"
     },
     "require-dev": {

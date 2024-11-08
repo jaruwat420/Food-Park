@@ -198,8 +198,8 @@
         </li>
         <li class="dropdown"><a href="#" data-toggle="dropdown"
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset(auth()->user()->avatar) }}" class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
+                {{-- <img alt="image" src="{{ asset(auth()->user()->avatar) }}" class="rounded-circle mr-1">
+                <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div> --}}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
@@ -228,18 +228,20 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">CHAIXI</a>
+            <a href="{{ route('data.index') }}">CHAIXI</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html">St</a>
+            <a href="{{ route('home') }}">St</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown active">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i>General
-                    Dashboard</a>
-            </li>
+                <li class="active"><a class="nav-link" href="{{ route('data.index') }}"><i class="fas fa-fire"></i>ภาพรวม</a>
+                </li>
+                <li class="menu-header">Starter</li>
+                <li><a class="nav-link" href="{{ route('import.index') }}"> <i class="far fa square"></i><span>นำเข้าข้อมูล</span></a></li>
+                <li><a class="nav-link" href="{{ route('history.index') }}"> <i class="fas fa square"></i><sapn>ประวัติการใช้งาน</sapn></a></li>
             </li>
         </ul>
     </aside>
 </div>
+/

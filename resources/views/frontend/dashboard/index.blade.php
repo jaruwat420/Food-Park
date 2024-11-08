@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'content')
+@section('title', 'โปรไฟล์')
 
 @section('css')
 <style>
@@ -53,7 +53,7 @@
                             aria-orientation="vertical">
                             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                                aria-selected="true"><span><i class="fas fa-user"></i></span> Parsonal Info</button>
+                                aria-selected="true"><span><i class="fas fa-user"></i></span>ข้อมูลส่วนตัว</button>
 
                             <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-address" type="button" role="tab"
@@ -102,19 +102,19 @@
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>total order <span>(76)</span></h4>
+                                                    <h4>รออนุมัติ <span>(76)</span></h4>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item green">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>Completed <span>(71)</span></h4>
+                                                    <h4>อนุมัติสำเร็จ <span>(71)</span></h4>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item red">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>cancel <span>(05)</span></h4>
+                                                    <h4>ยกเลิก <span>(05)</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,7 +123,7 @@
                                     <div class="fp_dash_personal_info">
                                         <h4>Parsonal Information
                                             <a class="dash_info_btn">
-                                                <span class="edit">edit</span>
+                                                <span class="edit">แก้ไข</span>
                                                 <span class="cancel">cancel</span>
                                             </a>
                                         </h4>
