@@ -6,7 +6,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>FoodPark || Restaurant Template</title>
+    <title>@yield('title')</title>
 
     @include('frontend.partials.header')
     @yield('css')
@@ -78,7 +78,8 @@
     <script src="{{ asset('frontend/js/toastr.min.js') }}"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
-
+    {{-- Sweet alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!--show message dynamic vaidation js-->
     <script>
 

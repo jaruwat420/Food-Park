@@ -79,7 +79,7 @@ button {
 }
 
 :root {
-    --colorPrimary: hsl(42, 89%, 45%);
+    --colorPrimary: rgb(252, 164, 113);
     --paraColor: #494949;
     --colorBlack: #010f1c;
     --colorWhite: #ffffff;

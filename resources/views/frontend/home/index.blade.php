@@ -1,5 +1,8 @@
 @extends('frontend.layouts.master')
 
+@section('title', 'Chaixi Corporation')
+
+
 @section('content')
 <!--=============================
         BANNER START

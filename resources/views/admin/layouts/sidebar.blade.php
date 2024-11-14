@@ -235,10 +235,12 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
-            <li class="dropdown active">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i>General
+                <li class="active"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i>General
                     Dashboard</a>
-            </li>
+                </li>
+                <li class="menu-header">Starter</li>
+                <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-square"></i> <sapn>สไลด์</sapn></a></li>
+                <li><a class="nav-link" href="{{ route('ticket.index') }}"><i class="fas fa-square"></i> <sapn>Tickets</sapn></a></li>
             </li>
         </ul>
     </aside>

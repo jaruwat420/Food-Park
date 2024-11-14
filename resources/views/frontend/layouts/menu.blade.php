@@ -10,15 +10,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('home') }}">หน้าแรก</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.html">about</a>
+                    <a class="nav-link" href="{{ route('ticket.index') }}">แจ้งปัญหา</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="menu.html">menu</a>
+                    <a class="nav-link" href="#">ติดต่อเรา</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link" href="chefs.html">chefs</a>
                 </li>
                 <li class="nav-item">
@@ -45,10 +45,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">contact</a>
-                </li>
+                </li> --}}
             </ul>
             <ul class="menu_icon d-flex flex-wrap">
-                <li>
+                {{-- <li>
                     <a href="#" class="menu_search"><i class="far fa-search"></i></a>
                     <div class="fp__search_form">
                         <form>
@@ -57,16 +57,15 @@
                             <button type="submit">search</button>
                         </form>
                     </div>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a class="cart_icon"><i class="fas fa-shopping-basket"></i> <span>5</span></a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('login') }}"><i class="fas fa-user"></i></a>
                 </li>
                 <li>
-                    <a class="common_btn" href="#" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">reservation</a>
+                    <a class="common_btn" href="{{ route('login') }}">เข้าสู่ระบบ</a>
                 </li>
             </ul>
         </div>

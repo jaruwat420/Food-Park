@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'content')
+@section('title', 'โปรไฟล์')
 
 @section('css')
 <style>
@@ -53,9 +53,9 @@
                             aria-orientation="vertical">
                             <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home"
-                                aria-selected="true"><span><i class="fas fa-user"></i></span> Parsonal Info</button>
+                                aria-selected="true"><span><i class="fas fa-user"></i></span>ข้อมูลส่วนตัว</button>
 
-                            <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
+                            {{-- <button class="nav-link" id="v-pills-address-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-address" type="button" role="tab"
                                 aria-controls="v-pills-address" aria-selected="true"><span><i
                                         class="fas fa-user"></i></span>address</button>
@@ -73,17 +73,17 @@
                             <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-messages" type="button" role="tab"
                                 aria-controls="v-pills-messages" aria-selected="false"><span><i
-                                        class="fas fa-star"></i></span> Reviews</button>
+                                        class="fas fa-star"></i></span> Reviews</button> --}}
 
                             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-settings" type="button" role="tab"
                                 aria-controls="v-pills-settings" aria-selected="false"><span><i
-                                        class="fas fa-user-lock"></i></span> Change Password </button>
+                                        class="fas fa-user-lock"></i></span>เปลี่ยนรหัสผ่าน</button>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();" type="button"><span> <i class="fas fa-sign-out-alt"></i>
-                                </span> Logout</button>
+                                </span>ออกจากระบบ</button>
                             </form>
                         </div>
                     </div>
@@ -102,19 +102,19 @@
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>total order <span>(76)</span></h4>
+                                                    <h4>รออนุมัติ <span>(76)</span></h4>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item green">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>Completed <span>(71)</span></h4>
+                                                    <h4>อนุมัติสำเร็จ <span>(71)</span></h4>
                                                 </div>
                                             </div>
                                             <div class="col-xl-4 col-sm-6 col-md-4">
                                                 <div class="fp__dsahboard_overview_item red">
                                                     <span class="icon"><i class="far fa-shopping-basket"></i></span>
-                                                    <h4>cancel <span>(05)</span></h4>
+                                                    <h4>ยกเลิก <span>(05)</span></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,14 +123,14 @@
                                     <div class="fp_dash_personal_info">
                                         <h4>Parsonal Information
                                             <a class="dash_info_btn">
-                                                <span class="edit">edit</span>
+                                                <span class="edit">แก้ไข</span>
                                                 <span class="cancel">cancel</span>
                                             </a>
                                         </h4>
 
                                         <div class="personal_info_text">
-                                            <p><span>Name:</span> {{ auth()->user()->name }}</p>
-                                            <p><span>Email:</span> {{ auth()->user()->email }}</p>
+                                            <p><span>ชื่อ:</span> {{ auth()->user()->name }}</p>
+                                            <p><span>อีเมลล์:</span> {{ auth()->user()->email }}</p>
                                         </div>
 
                                         <div class="fp_dash_personal_info_edit comment_input p-0">
@@ -140,18 +140,18 @@
                                                 <div class="row">
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="fp__comment_imput_single">
-                                                            <label>name</label>
+                                                            <label>ชื่อ</label>
                                                             <input type="text" placeholder="Name" name="name" value="{{ auth()->user()->name }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-6 col-lg-6">
                                                         <div class="fp__comment_imput_single">
-                                                            <label>email</label>
+                                                            <label>อีเมลล์</label>
                                                             <input type="email" placeholder="Email" name="email" value="{{ auth()->user()->email }}">
                                                         </div>
                                                     </div>
                                                     <div class="col-xl-12">
-                                                        <button type="submit" class="common_btn">submit</button>
+                                                        <button type="submit" class="common_btn">ตกลง</button>
                                                     </div>
                                                 </div>
                                             </form>
