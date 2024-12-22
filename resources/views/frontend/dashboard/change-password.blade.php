@@ -10,19 +10,19 @@
                         <div class="col-xl-6">
                             <div class="fp__comment_imput_single">
                                 <label>รหัสผ่านเดิม</label>
-                                <input type="password" placeholder="Current Password" name="current_password">
+                                <input type="password" placeholder="รหัสผ่านเดิม" name="current_password">
                             </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="fp__comment_imput_single">
                                 <label>รหัสผ่านใหม่</label>
-                                <input type="password" placeholder="New Password" name="password">
+                                <input type="password" placeholder="รหัสผ่านใหม่" name="password">
                             </div>
                         </div>
                         <div class="col-xl-12">
                             <div class="fp__comment_imput_single">
                                 <label>ยืนยันรหัสผ่าน</label>
-                                <input type="password" placeholder="Confirm Password" name="password_confirmation">
+                                <input type="password" placeholder="ยืนยันรหัสผ่าน" name="password_confirmation">
                             </div>
                             <button type="submit" class="common_btn mt_20">ตกลง</button>
                         </div>

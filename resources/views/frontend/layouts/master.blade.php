@@ -80,6 +80,7 @@
     <script src="{{ asset('frontend/js/main.js') }}"></script>
     {{-- Sweet alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!--show message dynamic vaidation js-->
     <script>
 

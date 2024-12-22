@@ -2,30 +2,31 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\WhyChooseUs;
-use App\Models\sectionTitle;
+use Illuminate\Support\Facades\DB;
 
 class WhyChooseUsTitleSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        sectionTitle::insert([
+        DB::table('section_titles')->insert([
             [
                 'key' => 'why_choose_top_title',
                 'value' => 'why choose us',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'key' => 'why_choose_main_title',
                 'value' => 'why choose us',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
                 'key' => 'why_choose_sub_title',
-                'value' => 'why choose us why choose us why choose us why choose us why choose us why choose us why choose us  why choose us why choose us why choose us v why choose usv why choose us',
+                'value' => 'why choose us why choose us why choose us why choose us why choose us why choose us why choose us why choose us why choose us why choose us v why choose usv why choose us',
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }

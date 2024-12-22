@@ -9,5 +9,5 @@ class SectionTitle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['key' => 'value'];
+    protected $fillable = ['key', 'value'];
 }

@@ -21,7 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role'
+        'role',
+        'is_active',
+        'position',
+        'department'
     ];
 
     /**
@@ -44,19 +47,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    // get roles
+    public static function getRoles()
+    {
+        return ['admin', 'staff', 'user'];
+    }
+
+    public function scopeStaff($query)
+    {
+        return $query->where('role', 'staff')->where('is_active', true);
+    }
+
+    public function isStaff()
+    {
+        return $this->role === 'staff';
+    }
 
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
 
-    public function assignedTickets()
-    {
-        return $this->hasMany(Ticket::class, 'assigned_to');
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function assignedTickets()
+    {
+        return $this->hasMany(Ticket::class, 'assigned_to');
     }
 }

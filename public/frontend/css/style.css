@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,800&family=Jost:wght@200;300;400;500;600;700;800;900&family=Lobster&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -32,6 +31,7 @@ h6 {
     padding: 0;
     font-family: var(--headingFont);
     color: var(--colorBlack);
+    font-weight: 100;
 }
 
 p,
@@ -79,19 +79,20 @@ button {
 }
 
 :root {
-    --colorPrimary: rgb(252, 164, 113);
-    --paraColor: #494949;
-    --colorBlack: #010f1c;
+    /* Modern Color Palette */
+    --colorPrimary: #7c3aed;  /* Modern indigo */
+    --paraColor: #64748b;     /* Slate gray */
+    --colorBlack: #0f172a;    /* Dark slate */
     --colorWhite: #ffffff;
-    --paraFont:
-        'Barlow', sans-serif;
-    --headingFont:
-        'Jost', sans-serif;
-    --cursiveFont:
-        'Lobster', cursive;
-    --boxShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    --gradiantBg: rgb(156, 3, 30)linear-gradient(0deg, rgba(156, 3, 30, 1) 0%, rgba(235, 0, 41, 1) 100%);
-    --gradiantHoverBg: rgb(235, 0, 41)linear-gradient(0deg, rgba(235, 0, 41, 1) 0%, rgba(156, 3, 30, 1) 100%);
+
+    /* Typography */
+    --paraFont: 'Inter', 'Kanit', sans-serif;
+    --headingFont: 'Plus Jakarta Sans', 'Kanit', sans-serif;
+    --cursiveFont: 'Outfit', 'Kanit', sans-serif;
+    /* Effects */
+    --boxShadow: 0px 4px 6px -1px rgb(0 0 0 / 0.1);
+    --gradiantBg: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+    --gradiantHoverBg: linear-gradient(135deg, #6366f1 0%, #7c3aed 100%);
 }
 
 /*============================
@@ -2497,7 +2498,7 @@ footer {
 
 .fp__breadcrumb_overlay {
     padding: 250px 0px 125px 0px;
-    background: #f86f03a3;
+    background: #7c3aed;
     position: relative;
 }
 
@@ -6504,6 +6505,10 @@ CHECKOUT PAGE START
 /* footer 2 start */
 .footer2 .footer_overlay {
     background: #000000d9;
+}
+
+footer {
+    margin-top: 20px;
 }
 
 .fp__subscribe {

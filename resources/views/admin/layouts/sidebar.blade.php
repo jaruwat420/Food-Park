@@ -2,8 +2,7 @@
     <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
             <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
-                        class="fas fa-search"></i></a></li>
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
         </ul>
         <div class="search-element">
             <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
@@ -69,8 +68,7 @@
         </div>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Messages
                     <div class="float-right">
@@ -136,8 +134,7 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-                class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
+        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link notification-toggle nav-link-lg beep"><i class="far fa-bell"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
                 <div class="dropdown-header">Notifications
                     <div class="float-right">
@@ -196,8 +193,7 @@
                 </div>
             </div>
         </li>
-        <li class="dropdown"><a href="#" data-toggle="dropdown"
-                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+        <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image" src="{{ asset(auth()->user()->avatar) }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
             </a>
@@ -234,13 +230,28 @@
             <a href="index.html">St</a>
         </div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-                <li class="active"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i>General
-                    Dashboard</a>
+            <li class="menu-header">หน้าแรก</li>
+            <li class="active"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-fire"></i>หน้าแรก</a>
+            </li>
+            <li class="menu-header">เริ่มต้น</li>
+            <li>
+                <a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-square"></i>
+                    <sapn>สไลด์</sapn>
+                </a></li>
+            <li class="menu-header">ตั้งค่า</li>
+                <li class="{{ request()->routeIs('admin.tickets.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.tickets.index') }}"><i class="fas fa-square"></i>Tickets</a>
                 </li>
-                <li class="menu-header">Starter</li>
-                <li><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-square"></i> <sapn>สไลด์</sapn></a></li>
-                <li><a class="nav-link" href="{{ route('ticket.index') }}"><i class="fas fa-square"></i> <sapn>Tickets</sapn></a></li>
+                <li class="{{ request()->routeIs('admin.location.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.location.index') }}"><i class="fas fa-square"></i>สถานที่</a>
+                </li>
+                <li class="#">
+                    <a class="nav-link" href="#"><i class="fas fa-user"></i>ปัญหา</a>
+                </li>
+                <li class="{{ request()->routeIs('admin.user.index') ? 'active' : '' }}">
+                    <a class="nav-link" href="{{ route('admin.user.index') }}"><i class="fas fa-user"></i>ผู้ใช้งาน</a>
+                </li>
+
             </li>
         </ul>
     </aside>

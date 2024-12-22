@@ -9541,7 +9541,7 @@ paperclip:
   label: Paperclip
   search:
     terms:
-      - attachment
+      - Attachments
   styles:
     - solid
   unicode: f0c6

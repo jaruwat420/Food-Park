@@ -60,14 +60,15 @@
 <!--=============================
         BREADCRUMB START
     ==============================-->
-<section class="fp__breadcrumb" style="background: url(images/counter_bg.jpg);">
+
+    <section class="fp__breadcrumb" style="background: url('{{ asset('frontend/images/counter_bg.jpg') }}');">
     <div class="fp__breadcrumb_overlay">
         <div class="container">
             <div class="fp__breadcrumb_text">
-                <h1>sign in</h1>
+                <h1>เข้าสู่ระบบ</h1>
                 <ul>
-                    <li><a href="index.html">home</a></li>
-                    <li><a href="#">sign in</a></li>
+                    <li><a href="{{ route('home') }}">หน้าแรก</a></li>
+                    <li><a href="#">เข้าสู่ระบบ</a></li>
                 </ul>
             </div>
         </div>
@@ -86,21 +87,21 @@
             <div class="row wow fadeInUp" data-wow-duration="1s">
                 <div class="col-xxl-5 col-xl-6 col-md-9 col-lg-7 m-auto">
                     <div class="fp__login_area">
-                        <h2>Welcome back!</h2>
-                        <p>sign in to continue</p>
+                        <h2 class="mb-5 text-center">เข้าสู่ระบบ</h2>
+                        {{-- <p>เข้าสู่ระบบ</p> --}}
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="fp__login_imput">
-                                        <label>email</label>
-                                        <input type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
+                                        <label>อีเมล</label>
+                                        <input type="email" id="email" name="email" placeholder="อีเมล" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="fp__login_imput">
-                                        <label>password</label>
-                                        <input type="password" placeholder="Password" name="password" required>
+                                        <label>รหัสผ่าน</label>
+                                        <input type="password" placeholder="รหัสผ่าน" name="password" required>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
@@ -110,15 +111,15 @@
                                                 name="remember"
                                                 id="flexCheckDefault">
                                             <label class="form-check-label" for="flexCheckDefault">
-                                                Remeber Me
+                                                จดจำรหัสผ่าน
                                             </label>
                                         </div>
-                                        <a href="{{ route('password.request') }}">Forgot Password ?</a>
+                                        <a href="{{ route('password.request') }}">ลืมรหัสผ่าน ?</a>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="fp__login_imput">
-                                        <button type="submit" class="common_btn">login</button>
+                                        <button type="submit" class="common_btn">เข้าสู่ระบบ</button>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +131,7 @@
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
                         </ul> --}}
-                        <p class="create_account">Dont’t have an aceount ? <a href="{{ route('register') }}">Create Account</a>
+                        <p class="create_account">หากยังไม่มีบัญชี ? <a href="{{ route('register') }}">สร้างบัญชี</a>
                         </p>
                     </div>
                 </div>

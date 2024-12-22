@@ -13,11 +13,24 @@ class RoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next, ...$roles): Response
     {
-        if ($request->user()->role === $role) {
+        if (!$request->user()) {
+            return redirect('/login');
+        }
+
+        if (in_array($request->user()->role, $roles)) {
             return $next($request);
         }
-        return to_route('dashboard');
+
+        // redirect ตาม role
+        switch($request->user()->role) {
+            case 'admin':
+                return to_route('admin.dashboard');
+            case 'staff':
+                return to_route('staff.dashboard');
+            default:
+                return to_route('home');
+        }
     }
 }

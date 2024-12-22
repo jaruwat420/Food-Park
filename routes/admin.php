@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SliderController;
-
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminTicketController;
+use App\Http\Controllers\Admin\LocationController;
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function (){
 
@@ -17,6 +19,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function (){
 
     /** Slider Routes */
     Route::resource('slider', SliderController::class);
+    Route::resource('user', UserController::class);
 
+    /** Ticket */
+    Route::resource('tickets', AdminTicketController::class);
+    Route::post('admin/tickets/{id}/update', [AdminTicketController::class, 'update'])->name('admin.tickets.update');
+    Route::get('tickets/{id}/view', [AdminTicketController::class, 'view'])->name('tickets.view');
+
+    /** Location */
+    Route::resource('location', LocationController::class);
 });
 

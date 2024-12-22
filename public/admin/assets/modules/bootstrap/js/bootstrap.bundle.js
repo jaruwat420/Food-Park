@@ -3987,7 +3987,7 @@
       NAVBAR_NAV: '.navbar-nav',
       VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
     };
-    var AttachmentMap = {
+    var AttachmentsMap = {
       TOP: 'top-start',
       TOPEND: 'top-end',
       BOTTOM: 'bottom-start',
@@ -4161,20 +4161,20 @@
 
       _proto._getPlacement = function _getPlacement() {
         var $parentDropdown = $$$1(this._element.parentNode);
-        var placement = AttachmentMap.BOTTOM; // Handle dropup
+        var placement = AttachmentsMap.BOTTOM; // Handle dropup
 
         if ($parentDropdown.hasClass(ClassName.DROPUP)) {
-          placement = AttachmentMap.TOP;
+          placement = AttachmentsMap.TOP;
 
           if ($$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
-            placement = AttachmentMap.TOPEND;
+            placement = AttachmentsMap.TOPEND;
           }
         } else if ($parentDropdown.hasClass(ClassName.DROPRIGHT)) {
-          placement = AttachmentMap.RIGHT;
+          placement = AttachmentsMap.RIGHT;
         } else if ($parentDropdown.hasClass(ClassName.DROPLEFT)) {
-          placement = AttachmentMap.LEFT;
+          placement = AttachmentsMap.LEFT;
         } else if ($$$1(this._menu).hasClass(ClassName.MENURIGHT)) {
-          placement = AttachmentMap.BOTTOMEND;
+          placement = AttachmentsMap.BOTTOMEND;
         }
 
         return placement;
@@ -5021,7 +5021,7 @@
       fallbackPlacement: '(string|array)',
       boundary: '(string|element)'
     };
-    var AttachmentMap = {
+    var AttachmentsMap = {
       AUTO: 'auto',
       TOP: 'top',
       RIGHT: 'right',
@@ -5208,9 +5208,9 @@
 
           var placement = typeof this.config.placement === 'function' ? this.config.placement.call(this, tip, this.element) : this.config.placement;
 
-          var attachment = this._getAttachment(placement);
+          var Attachments = this._getAttachments(placement);
 
-          this.addAttachmentClass(attachment);
+          this.addAttachmentsClass(Attachments);
           var container = this.config.container === false ? document.body : $$$1(document).find(this.config.container);
           $$$1(tip).data(this.constructor.DATA_KEY, this);
 
@@ -5220,7 +5220,7 @@
 
           $$$1(this.element).trigger(this.constructor.Event.INSERTED);
           this._popper = new Popper(this.element, tip, {
-            placement: attachment,
+            placement: Attachments,
             modifiers: {
               offset: {
                 offset: this.config.offset
@@ -5340,8 +5340,8 @@
         return Boolean(this.getTitle());
       };
 
-      _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-        $$$1(this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
+      _proto.addAttachmentsClass = function addAttachmentsClass(Attachments) {
+        $$$1(this.getTipElement()).addClass(CLASS_PREFIX + "-" + Attachments);
       };
 
       _proto.getTipElement = function getTipElement() {
@@ -5383,8 +5383,8 @@
       }; // Private
 
 
-      _proto._getAttachment = function _getAttachment(placement) {
-        return AttachmentMap[placement.toUpperCase()];
+      _proto._getAttachments = function _getAttachments(placement) {
+        return AttachmentsMap[placement.toUpperCase()];
       };
 
       _proto._setListeners = function _setListeners() {
@@ -5556,7 +5556,7 @@
 
         this._cleanTipClass();
 
-        this.addAttachmentClass(this._getAttachment(popperData.placement));
+        this.addAttachmentsClass(this._getAttachments(popperData.placement));
       };
 
       _proto._fixTransition = function _fixTransition() {
@@ -5732,8 +5732,8 @@
         return this.getTitle() || this._getContent();
       };
 
-      _proto.addAttachmentClass = function addAttachmentClass(attachment) {
-        $$$1(this.getTipElement()).addClass(CLASS_PREFIX + "-" + attachment);
+      _proto.addAttachmentsClass = function addAttachmentsClass(Attachments) {
+        $$$1(this.getTipElement()).addClass(CLASS_PREFIX + "-" + Attachments);
       };
 
       _proto.getTipElement = function getTipElement() {

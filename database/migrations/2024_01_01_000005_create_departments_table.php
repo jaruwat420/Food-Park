@@ -7,23 +7,24 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+    * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->enum('name', ['Hardware', 'Software', 'Network']);
-            $table->string('description');
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('departments');
+        Schema::enableForeignKeyConstraints();
     }
 };

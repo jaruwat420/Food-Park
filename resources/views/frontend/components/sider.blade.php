@@ -1,4 +1,4 @@
-<section class="fp__banner" style="background: url(images/banner_bg.jpg);">
+{{-- <section class="fp__banner" style="background: url(images/banner_bg.jpg);">
     <div class="fp__banner_overlay">
         <div class="row banner_slider">
             @foreach($sliders as $slider)
@@ -24,6 +24,29 @@
                                     <ul class="d-flex flex-wrap">
                                         <li><a class="common_btn" href="{{ $slider->button_link }}">shop now</a></li>
                                     </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section> --}}
+<section class="fp__banner" style="background: url(images/banner_bg.jpg);">
+    <div class="fp__banner_overlay">
+        <div class="row banner_slider">
+            @foreach($sliders as $slider)
+            <div class="col-12">
+                <div class="fp__banner_slider">
+                    <div class=" container">
+                        <div class="row">
+                            <div class="col-xl-12 col-md-12 col-lg-12">
+                                <div class="fp__banner_img_corousel wow fadeInLeft" data-wow-duration="1s">
+                                    <div class="img-corousel">
+                                        <img src="{{ asset($slider->image) }}" class="img-fluid w-100" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>

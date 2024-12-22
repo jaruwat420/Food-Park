@@ -1,8 +1,71 @@
 @extends('frontend.layouts.master')
 
-@section('title', 'Chaixi Corporation')
+@section('title', 'แจ้งปัญหาเทคโนโลยีสารสนเทศ')
 @section('css')
 <style>
+    .dropzone {
+        border: 2px dashed #dee2e6;
+        border-radius: 5px;
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .dropzone:hover,
+    .dropzone.dz-drag-hover {
+        border-color: #0d6efd;
+        background-color: rgba(13, 110, 253, 0.05);
+    }
+
+    .dropzone .dz-message {
+        margin: 0;
+    }
+
+    .dropzone .dz-preview {
+        margin: 10px;
+    }
+
+    .dz-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .file-preview {
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .file-preview .file-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .file-preview .file-icon {
+        margin-right: 10px;
+        font-size: 24px;
+    }
+
+    .file-preview .file-name {
+        margin: 0;
+    }
+
+    .file-preview .file-size {
+        color: #6c757d;
+        font-size: 0.875rem;
+    }
+
+    .file-preview .remove-file {
+        color: #dc3545;
+        cursor: pointer;
+    }
+
     .custom-radio .custom-control-input:checked~.custom-control-label::before {
         background-color: #007bff;
         border-color: #007bff;
@@ -21,6 +84,7 @@
         text-align: center;
         border-radius: 8px;
         transition: all 0.3s ease;
+        height: 150px;
     }
 
     .problem-card label:hover {
@@ -83,6 +147,89 @@
     .form-control {
         transition: all 0.3s ease;
     }
+
+    .btn-outline-success-custom {
+        background-color: white;
+        border-color: #00BBA6;
+    }
+
+    /* Custom hover effect */
+    .btn-outline-success-custom:hover {
+        background-color: red;
+        color: white;
+    }
+
+    /* Custom hover for icon */
+    .btn-outline-success-custom:hover i {
+        color: orange;
+    }
+
+    /* Or target specific class */
+    .problem-card .btn-outline-success-custom:hover {
+        background-color: #00BBA6;
+        color: white;
+    }
+
+    .btn-outline-danger-custom {
+        background-color: white;
+        border-color: #F10DBA;
+    }
+
+    /* Custom hover effect */
+    .btn-outline-danger-custom:hover {
+        background-color: red;
+        color: white;
+    }
+
+    /* Custom hover for icon */
+    .btn-outline-danger-custom:hover i {
+        color: orange;
+    }
+
+    /* Or target specific class */
+    .problem-card .btn-outline-danger-custom:hover {
+        background-color: #F10DBA;
+        color: white;
+    }
+
+    .btn-outline-warning-custom {
+        background-color: white;
+        border-color: #edd63a;
+    }
+
+    /* Custom hover effect */
+    .btn-outline-warning-custom:hover {
+        background-color: red;
+        color: white;
+    }
+
+    /* Custom hover for icon */
+    .btn-outline-warning-custom:hover i {
+        color: orange;
+    }
+
+    /* Or target specific class */
+    .problem-card .btn-outline-warning-custom:hover {
+        background-color: #edd63a;
+        color: white;
+    }
+
+        .btn-check:checked + .btn-outline-success-custom {
+            background-color: #00BBA6;
+            color: white;
+        }
+
+        /* Danger Custom */
+        .btn-check:checked + .btn-outline-danger-custom {
+            background-color: #F10DBA;
+            color: white;
+        }
+
+        /* Warning Custom */
+        .btn-check:checked + .btn-outline-warning-custom {
+            background-color: #edd63a;
+            color: white;
+        }
 </style>
 
 @endsection
@@ -110,49 +257,32 @@
             <div class="form-group mb-4">
                 <label class="form-label fw-bold">ประเภทปัญหา<span class="text-danger">*</span></label>
                 <div class="row g-3">
+                    @foreach ($categories as $category)
                     <div class="col-md-4">
                         <div class="problem-card">
-                            <input type="radio" id="computer" name="inputProblem" value="1" class="btn-check" required>
-                            <label class="btn btn-outline-success w-100 h-100 p-3" for="computer">
-                                <i class="fas fa-laptop fs-4 mb-2"></i>
-                                <div>ด้านคอมพิวเตอร์และเครือข่าย</div>
+                            <input type="radio" id="category_{{ $category->id }}" name="inputProblem"
+                                value="{{ $category->id }}" class="btn-check" required>
+                            <label class="btn btn-outline-{{ $category->color ?? 'primary' }}  p-3"
+                                for="category_{{ $category->id }}">
+                                <i class="fas fa-{{ $category->icon ?? 'laptop' }} fa-5x fs-4 mb-2 "></i>
+                                <div>{{ $category->name }}</div>
                             </label>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="problem-card">
-                            <input type="radio" id="it" name="inputProblem" value="4" class="btn-check" required>
-                            <label class="btn btn-outline-primary w-100 h-100 p-3" for="it">
-                                <i class="fas fa-server fs-4 mb-2"></i>
-                                <div>ด้านระบบสารสนเทศ</div>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="problem-card">
-                            <input type="radio" id="phone" name="inputProblem" value="3" class="btn-check" required>
-                            <label class="btn btn-outline-warning w-100 h-100 p-3" for="phone">
-                                <i class="fas fa-phone fs-4 mb-2"></i>
-                                <div>ด้านระบบสื่อสารและอาคารสถานที่</div>
-                            </label>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="invalid-feedback">กรุณาเลือกประเภทปัญหา</div>
             </div>
 
             <!-- ส่วนเลือกหัวข้อปัญหา -->
             <div class="form-group mb-4">
-                <label class="form-label fw-bold" for="inputSubjectID">
+                <label class="form-label fw-bold" for="subject_id">
                     หัวข้อปัญหา<span class="text-danger">*</span>
                 </label>
-                <select class="form-select" id="inputSubjectID" name="inputSubjectID" required>
+                <select class="form-select" id="subject_id" name="subject_id" required>
                     <option value="">กรุณาเลือกหัวข้อปัญหา</option>
-                    <option value="1">เครื่องคอมพิวเตอร์ไม่ทำงาน</option>
-                    <option value="2">อินเตอร์เน็ตมีปัญหา</option>
-                    <option value="3">ติดตั้งโปรแกรม</option>
-                    <option value="4">ระบบใช้งานไม่ได้</option>
-                    <option value="5">อื่นๆ</option>
+                    @foreach($subjects as $subject)
+                    <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -164,9 +294,12 @@
                     <span class="input-group-text">
                         <i class="fas fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" id="userName" value="{{ $user->name ?? '' }}" readonly>
+                    <input type="text" class="form-control" name="userName" id="userName"
+                        value="{{ Auth::user()->name }}" readonly required>
+                    <div class="invalid-feedback">กรุณาระบุชื่อผู้แจ้ง</div>
                 </div>
             </div>
+
             <div class="form-group mb-4">
                 <label class="form-label fw-bold" for="userEmail">
                     อีเมล<span class="text-danger">*</span>
@@ -175,37 +308,33 @@
                     <span class="input-group-text">
                         <i class="fas fa-envelope"></i>
                     </span>
-                    <input type="email" class="form-control" id="userEmail" value="{{ $user->email ?? '' }}" readonly>
+                    <input type="email" class="form-control" name="userEmail" id="userEmail"
+                        value="{{ Auth::user()->email }}" readonly required>
+                    <div class="invalid-feedback">กรุณาระบุอีเมลให้ถูกต้อง</div>
                 </div>
             </div>
 
             <div class="form-group mb-4">
-                <label class="form-label fw-bold" for="inputSubjectLocation">
+                <label for="location_id" class="form-label fw-bold">
                     สถานที่<span class="text-danger">*</span>
                 </label>
-                <select class="form-select" id="inputSubjectLocation" name="inputSubjectLocation" required>
+                <select class="form-select" id="location_id" name="location_id" required>
                     <option value="">กรุณาเลือกสถานที่</option>
-                    <option value="1">สำนักงานใหญ่</option>
-                    <option value="2">โรงงานคลองหก</option>
-                    <option value="3">สำนักงานพระรามเก้า</option>
-                    <option value="4">ร้านอาหารในเครือ</option>
-                    <option value="5">อื่นๆ</option>
+                    @foreach($locations as $location)
+                    <option value="{{ $location->id }}">{{ $location->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-group mb-4">
-                <label class="form-label fw-bold" for="inputSubjectDepartment">
+                <label for="department_id" class="form-label fw-bold">
                     แผนก<span class="text-danger">*</span>
                 </label>
-                <select class="form-select" id="inputSubjectDepartment" name="inputSubjectDepartment" required>
+                <select class="form-select" id="department_id" name="department_id" required>
                     <option value="">กรุณาเลือกแผนก</option>
-                    <option value="1">ฝ่ายการตลาด</option>
-                    <option value="2">ฝ่ายบัญชี</option>
-                    <option value="3">ฝ่ายไอที</option>
-                    <option value="4">ฝ่ายขาย</option>
-                    <option value="4">ฝ่ายบุคคล</option>
-                    <option value="4">ฝ่ายพัฒนาธุรกิจ</option>
-                    <option value="5">อื่นๆ</option>
+                    @foreach($departments as $department)
+                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                    @endforeach
                 </select>
             </div>
 
@@ -222,6 +351,22 @@
                     <div class="invalid-feedback">กรุณาระบุรายละเอียดปัญหา</div>
                 </div>
             </div>
+            <div class="form-group mb-4">
+                <label class="form-label fw-bold" for="inputFile">
+                    แนบไฟล์
+                    <small class="text-muted">(หากมีไฟล์ประกอบโปรดแนบ)</small>
+                </label>
+                <div class="dropzone" id="fileUpload">
+                    <div class="dz-message needsclick">
+                        <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                        <h4>ลากไฟล์มาวางที่นี่หรือคลิกเพื่อเลือกไฟล์</h4>
+                        <p class="text-muted">
+                            (รองรับไฟล์ .jpg, .png, .pdf ขนาดไม่เกิน 5MB)
+                        </p>
+                    </div>
+                </div>
+                <div id="preview" class="mt-3"></div>
+            </div>
 
             <!-- ปุ่มส่งข้อมูล -->
             <div class="text-center">
@@ -236,51 +381,149 @@
     </div>
 </div>
 @endsection
+
 @push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js" integrity="sha512-oQq8uth41D+gIH/NJvSJvVB85MFk1eWpMK6glnkg6I7EdMqC1XVkW7RxLheXwmFdG03qScCM7gKS/Cx3FYt7Tg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-   $(document).ready(function() {
-    $('#problemForm').on('submit', function(event) {
-        event.preventDefault();
 
-        if (this.checkValidity()) {
-            let formData = new FormData(this);
 
-            $.ajax({
-                url: "{{ route('tickets.store') }}",
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'สำเร็จ!',
-                            text: 'บันทึกข้อมูลเรียบร้อยแล้ว',
-                            showConfirmButton: true
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = response.redirect_url;
+    Dropzone.autoDiscover = false;
+
+    $(document).ready(function() {
+        const myDropzone = new Dropzone("#fileUpload", {
+            url: "{{ route('upload.temp') }}",
+            paramName: "file",
+            maxFilesize: 5,
+            maxFiles: 5,
+            acceptedFiles: ".jpg,.jpeg,.png,.pdf",
+            addRemoveLinks: true,
+            dictDefaultMessage: "ลากไฟล์มาวางที่นี่หรือคลิกเพื่อเลือกไฟล์",
+            dictRemoveFile: "ลบไฟล์",
+            dictFileTooBig: "ไฟล์มีขนาดใหญ่เกินไป ขนาดสูงสุด: 5MB",
+            dictInvalidFileType: "ไม่รองรับไฟล์ประเภทนี้",
+            dictMaxFilesExceeded: "ไม่สามารถอัพโหลดไฟล์เพิ่มได้ (สูงสุด: 5 ไฟล์)",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            init: function() {
+                // เมื่ออัพโหลดสำเร็จ
+                this.on("success", function(file, response) {
+                    if(response.success) {
+                        $('#problemForm').append(`
+                            <input type="hidden" name="files[]" value="${response.path}">
+                        `);
+                    }
+                });
+
+                // เมื่อลบไฟล์
+                this.on("removedfile", function(file) {
+                    if (file.upload && file.upload.filename) {
+                        $(`input[value="${file.upload.filename}"]`).remove();
+
+                        $.ajax({
+                            url: "{{ route('upload.remove') }}",
+                            type: 'POST',
+                            data: {
+                                filename: file.upload.filename,
+                                _token: $('meta[name="csrf-token"]').attr('content')
                             }
                         });
                     }
-                },
-                error: function(xhr) {
+                });
+
+                this.on("error", function(file, errorMessage) {
+                    if (typeof errorMessage === "string") {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เกิดข้อผิดพลาด!',
+                            text: errorMessage,
+                            confirmButtonText: 'ตกลง'
+                        });
+                        this.removeFile(file);
+                    }
+                });
+
+                // เมื่อเพิ่มไฟล์
+                this.on("addedfile", function(file) {
+                    // ตรวจสอบขนาดไฟล์
+                    if (file.size > (5 * 1024 * 1024)) {
+                        this.removeFile(file);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ไฟล์มีขนาดใหญ่เกินไป',
+                            text: 'กรุณาอัพโหลดไฟล์ขนาดไม่เกิน 5MB',
+                            confirmButtonText: 'ตกลง'
+                        });
+                    }
+                });
+            }
+        });
+
+        // การส่งฟอร์ม
+        $('#problemForm').on('submit', function(e) {
+            e.preventDefault();
+
+            if (this.checkValidity()) {
+                let formData = new FormData(this);
+
+                let email = $('#userEmail').val();
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
                     Swal.fire({
                         icon: 'error',
-                        title: 'เกิดข้อผิดพลาด!',
-                        text: xhr.responseJSON.message || 'กรุณาลองใหม่อีกครั้ง',
+                        title: 'รูปแบบอีเมลไม่ถูกต้อง',
+                        text: 'กรุณาตรวจสอบอีเมลอีกครั้ง',
                         confirmButtonText: 'ตกลง'
                     });
+                    return;
                 }
-            });
-        } else {
-            $(this).addClass('was-validated');
-        }
+
+                let files = myDropzone.getAcceptedFiles();
+                files.forEach(function(file, index) {
+                    formData.append(`files[${index}]`, file);
+                });
+
+                Swal.fire({
+                    title: 'กำลังบันทึกข้อมูล...',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'สำเร็จ!',
+                                text: 'บันทึกข้อมูลเรียบร้อยแล้ว',
+                                showConfirmButton: true
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = response.redirect_url;
+                                }
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เกิดข้อผิดพลาด!',
+                            text: xhr.responseJSON.message || 'กรุณาลองใหม่อีกครั้ง',
+                            confirmButtonText: 'ตกลง'
+                        });
+                    }
+                });
+            } else {
+                $(this).addClass('was-validated');
+            }
+        });
     });
-});
 </script>
 @endpush

@@ -13,60 +13,35 @@
                     <a class="nav-link active" aria-current="page" href="{{ route('home') }}">หน้าแรก</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('ticket.index') }}">แจ้งปัญหา</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">ติดต่อเรา</a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a class="nav-link" href="chefs.html">chefs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">pages <i class="far fa-angle-down"></i></a>
+                    <a class="nav-link" href="#">ติดต่อเรา <i class="far fa-angle-down"></i></a>
                     <ul class="droap_menu">
-                        <li><a href="menu_details.html">menu details</a></li>
-                        <li><a href="blog_details.html">blog details</a></li>
-                        <li><a href="cart_view.html">cart view</a></li>
-                        <li><a href="check_out.html">checkout</a></li>
-                        <li><a href="payment.html">payment</a></li>
-                        <li><a href="testimonial.html">testimonial</a></li>
-                        <li><a href="search_menu.html">search result</a></li>
-                        <li><a href="404.html">404/Error</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="sign_in.html">sign in</a></li>
-                        <li><a href="sign_up.html">sign up</a></li>
-                        <li><a href="forgot_password.html">forgot password</a></li>
-                        <li><a href="privacy_policy.html">privacy policy</a></li>
-                        <li><a href="terms_condition.html">terms and condition</a></li>
+                        <li><a href="{{ route('ticket.index') }}">เปิด Ticket</a></li>
+                        <li><a href="tickets/1">ติดตามสถานะการแจ้ง</a></li>
+                        <li><a href="#">เช็คข้อมูลทรัพย์สิน</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="blogs.html">blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact</a>
-                </li> --}}
             </ul>
             <ul class="menu_icon d-flex flex-wrap">
-                {{-- <li>
-                    <a href="#" class="menu_search"><i class="far fa-search"></i></a>
-                    <div class="fp__search_form">
-                        <form>
-                            <span class="close_search"><i class="far fa-times"></i></span>
-                            <input type="text" placeholder="Search . . .">
-                            <button type="submit">search</button>
-                        </form>
-                    </div>
-                </li> --}}
-                {{-- <li>
-                    <a class="cart_icon"><i class="fas fa-shopping-basket"></i> <span>5</span></a>
-                </li> --}}
-                <li>
-                    <a href="{{ route('login') }}"><i class="fas fa-user"></i></a>
-                </li>
-                <li>
-                    <a class="common_btn" href="{{ route('login') }}">เข้าสู่ระบบ</a>
-                </li>
+                @guest
+                    <li>
+                        <a href="{{ route('profile.dashboard') }}"><i class="fas fa-user"></i></a>
+                    </li>
+                @else
+                    @if(auth()->user()->role == 'admin')
+                        <li>
+                            <a class="common_btn" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                        </li>
+
+                    @elseif (auth()->user()->role == 'staff')
+                        <li>
+                            <a class="common_btn" href="{{ route('admin.dashboard') }}">Dashboard</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('profile.dashboard') }}"><i class="fas fa-user"></i></a>
+                        </li>
+                    @endif
+                @endguest
             </ul>
         </div>
     </div>
