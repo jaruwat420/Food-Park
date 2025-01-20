@@ -22,7 +22,7 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return "Coming Soon";
     }
 
     /**
@@ -30,6 +30,7 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
+
         Locations::create([
             'name' => $request->name,
             'description' => $request->email,
